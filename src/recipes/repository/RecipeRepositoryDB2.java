@@ -9,6 +9,7 @@ import recipes.repository.Interface.RecipeRepositoryInterface;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @Qualifier("recipeDBRepository2")
@@ -37,7 +38,7 @@ public class RecipeRepositoryDB2 implements RecipeRepositoryInterface {
 
     @Override
     public void updateRecipe(long id, Recipe newRecipe) {
-        var oldRecipe = this.recipeRepository.findById(id);
+        Optional<Recipe> oldRecipe = this.recipeRepository.findById(id);
         if (oldRecipe.isEmpty()) {
             throw new EmptyResultDataAccessException(1);
         }

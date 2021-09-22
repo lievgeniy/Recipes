@@ -30,7 +30,7 @@ public class RecipeController {
 
     @GetMapping("/{id}")
     public Recipe getRecipe(@PathVariable @Min(1) long id) {
-        var recipe = this.recipeService.getRecipe(id);
+        Recipe recipe = this.recipeService.getRecipe(id);
         return recipe;
     }
 

@@ -44,7 +44,7 @@ public class RecipeService implements RecipeServiceInterface {
 
     @Override
     public Recipe getRecipe(long id) {
-        var recipe = this.recipeRepository.getRecipe(id);
+        Recipe recipe = this.recipeRepository.getRecipe(id);
         if (recipe == null) {
             throw new RecipeNotFoundException("Recipe not found with id : " + id);
         }

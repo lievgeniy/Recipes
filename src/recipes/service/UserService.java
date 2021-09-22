@@ -7,10 +7,7 @@ import recipes.exception.BadParametersException;
 import recipes.exception.ItemNotFoundException;
 import recipes.model.User;
 import recipes.repository.Interface.IUserRepository;
-import recipes.security.WebSecurityConfigurerImpl;
 import recipes.service.inter.IUserService;
-
-import java.util.Optional;
 
 @Service
 public class UserService implements IUserService {
@@ -48,7 +45,7 @@ public class UserService implements IUserService {
 
     @Override
     public void updateUser(long id, User newUser) {
-        var oldUser = this.userRepository.findById(id)
+        User oldUser = this.userRepository.findById(id)
                 .orElseThrow(() -> new ItemNotFoundException("User not found with id: " + id));
         oldUser.setEmail(newUser.getEmail());
         oldUser.setPassword(newUser.getPassword());
